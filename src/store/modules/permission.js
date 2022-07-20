@@ -13,6 +13,7 @@ export default {
     getters:{},
     mutations:{
         SET_PERMISSION(state,routes){
+            console.log("routes",routes)
             state.permissionList = routes;
         },
         CLEAR_PERMSSION(state){
@@ -20,7 +21,7 @@ export default {
         },
         SET_MENU(state,menu){
             state.sidebarMenu = menu;
-        },
+        }, 
         CLEAR_MENU(state){
             state.sidebarMenu = []
         }
@@ -29,6 +30,8 @@ export default {
     actions:{
         async FETCH_PERMISSION({ commit,state }){
             let permissionList = await fetchPermission();
+            console.log("permissionList",permissionList)
+            console.log("dynamicRouter",dynamicRouter)
             // 筛选1
             let routes = recursionRouter(permissionList,dynamicRouter);
             console.log('routes',routes)
@@ -42,9 +45,10 @@ export default {
             // 设置默认路由
             setDefaultRoute([MainContainer]);
             // 初始化路由
-            console.log('初始化路由',router.options.routes)
+            console.log('初始化路由',router.options.routes,DynamicRoutes)
             let initialRoutes = router.options.routes;
             router.addRoutes(DynamicRoutes);
+            console.log('routerrouter',router)
             commit("SET_PERMISSION",[ ...initialRoutes , ...DynamicRoutes])
         }
     }

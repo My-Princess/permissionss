@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <span>短刀</span>
     <router-view></router-view>
   </div>
 </template>

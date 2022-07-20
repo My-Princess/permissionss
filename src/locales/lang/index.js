@@ -2,6 +2,7 @@
 // 多文件合并成对象
 var moduleEn = {};
 const requireComponent = require.context('./en', false, /\.js$/)
+console.log('requireComponent',requireComponent)
 requireComponent.keys().forEach(fileName => {
     const componentConfig = requireComponent(fileName)
     Object.assign(moduleEn, componentConfig.default);
@@ -16,7 +17,7 @@ const moduleEn = moduleFiles.keys().map(obj => {
 
 
 var moduleCn = {};
-const moduleFiles = require.context('./en', false, /\.js$/)
+const moduleFiles = require.context('./zh-CH', false, /\.js$/)
 moduleFiles.keys().forEach(fileName => {
     const componentConfig = moduleFiles(fileName)
     Object.assign(moduleCn, componentConfig.default);
