@@ -14,6 +14,8 @@
 import BaiduMap from "vue-baidu-map/components/map/Map.vue";
 import mapResult from "../../../../utils/mapResult";
 import GPS from "../../../../utils/gps";
+import BMapLib from '@/utils/GeoUtils'
+
 export default {
   components: {
     BaiduMap,
@@ -162,6 +164,9 @@ export default {
       }
       var point = [];
       this.allPoints = [];
+      /*
+        1.遍历获取坐标
+      */
       for (var i = 0; i < data.length; i++) {
         var polygonArray = [];
         var polygonPoint = [];
@@ -308,20 +313,35 @@ export default {
         this.setZoom(point);
       }, 100);
 
-      // 单击获取点击的经纬度
-      this.map.addEventListener("touchstart", (e) => {
+      // // 单击获取点击的经纬度
+      // this.map.addEventListener("touchstart", (e) => {
+      //   // 判断点击的是不是覆盖物
+      //   // console.log(e.overlay);
+      //   // if (e.overlay) {
+      //   var point = new BMap.Point(e.point.lng, e.point.lat);
+      //   for (var i = 0; i < this.allPoints.length; i++) {
+      //     // 判断点在哪一个
+      //     if (BMapLib.GeoUtils.isPointInPolygon(point, this.allPoints[i])) {
+      //       this.removeOverlay(e.point, this.mapResult[i], this.allPoints[i]);
+      //     }
+      //   }
+      //   // }
+      // });
+            // 单击获取点击的经纬度
+      this.map.addEventListener('click', e => {
+        console.log("点击点击",e)
         // 判断点击的是不是覆盖物
         // console.log(e.overlay);
         // if (e.overlay) {
-        var point = new BMap.Point(e.point.lng, e.point.lat);
+        var point = new BMap.Point(e.point.lng, e.point.lat)
         for (var i = 0; i < this.allPoints.length; i++) {
           // 判断点在哪一个
           if (BMapLib.GeoUtils.isPointInPolygon(point, this.allPoints[i])) {
-            this.removeOverlay(e.point, this.mapResult[i], this.allPoints[i]);
+            this.removeOverlay(e.point, this.mapResult[i], this.allPoints[i])
           }
         }
         // }
-      });
+      })
     },
     // 处理坐标数据
     pointDeal(point) {
@@ -358,8 +378,10 @@ export default {
     },
     // 删除覆盖物并进行打点
     removeOverlay(point, data, polygon) {
+      console.log("覆盖物",data)
       // 获取覆盖物的颜色
       this.mapFloatColor = polygon.getFillColor();
+      console.log("覆盖物的颜色",this.mapFloatColor)
       if (this.mapFloatColor != "#fff") {
         // 获取所有覆盖物
         var allOverlay = this.map.getOverlays();
@@ -374,12 +396,7 @@ export default {
         }
         // console.log(this.indicatorSub);
         console.log("地图点击了呀");
-        if (
-          this.indicatorSub != null &&
-          this.indicatorSub.orgName != undefined
-        ) {
-          console.log("进来了呀");
-          console.log(data);
+          console.log('数据',data);
           var marker = new BMap.Marker(point);
           this.map.addOverlay(marker);
           // if (data != undefined) {
@@ -390,11 +407,7 @@ export default {
           // }
           // this.mapNext = true;
           // $scope.$apply();
-        } else {
-          console.log("服务器未查询到数据");
-          // this.mapNext = false;
-          // this.$dialog.alert({ message: "服务器未查询到数据" });
-        }
+        
       } else {
         console.log("是白色");
       }

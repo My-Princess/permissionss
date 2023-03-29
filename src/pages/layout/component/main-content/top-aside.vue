@@ -109,6 +109,7 @@ export default {
                 transform: scaleX(0);
                 transform-origin: right 0;
                 transition: transform 0.5s;
+           
             }
             &::before {
                 content: '';

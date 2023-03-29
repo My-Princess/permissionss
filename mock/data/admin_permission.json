@@ -3,6 +3,14 @@
     "message": "获取权限成功",
     "data": [
         {
+            "name": "失效问题",
+            "children": [
+                {
+                    "name": "v-model"
+                }
+            ]
+        },
+        {
             "name": "订单管理",
             "children": [
                 
@@ -51,6 +59,24 @@
                     ]
                 },{
                     "name":"高德地图"
+                }
+            ]
+        },{
+            "name":"使用技巧",
+            "children":[
+                {
+                    "name":"缺陷"
+                },
+                {
+                    "name":"通信"
+                }
+            ]
+        },
+        {
+            "name":"流程图",
+            "children":[
+                {
+                    "name":"起步"
                 }
             ]
         }

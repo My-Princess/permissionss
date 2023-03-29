@@ -1,20 +1,43 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+     
+    <keep-alive>
+      <router-view ></router-view>
+    </keep-alive>
+
+  
+    <!-- <orderList v-show="this.$route.name == 'printReportShow'"></orderList> -->
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 
 export default {
   name: "app",
-  components: {},
-  data(){
-    return{}
+  // components: { printReportShow },
+  data() {
+    return {
+      status: true,
+      componentsArr: [],
+       iframeArr:[],
+    };
   },
-  mounted(){
-    //  const { t } = useI18n()
-  }
+  watch: {
+
+  },
+  created() {
+
+    // const componentsArr = this.getComponentsArr();
+  },
+
+
+  mounted() {
+
+  },
+  methods: {
+
+  },
 };
 </script>
 

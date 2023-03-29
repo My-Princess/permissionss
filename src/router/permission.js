@@ -1,6 +1,6 @@
 import router from "./index"
 import store from "../store/index"
-
+// import login from '../components/LoginDialog.vue'
 router.beforeEach((to,from,next) =>{
     if(!store.state.UserToken){
         console.log('matched',to.matched,to.matched.some(record => record.meta.requiresAuth))
@@ -25,6 +25,7 @@ router.beforeEach((to,from,next) =>{
             // store存在权限
             if(to.path !== "/login"){
                 console.log('嘻嘻')
+                // login.install();
                 next();
             }else{
                 console.log('哈哈')

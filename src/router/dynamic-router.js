@@ -1,6 +1,9 @@
+/* 失效问题 */
+const loseEfficacy = () => import('../pages/loseEfficacy/model')
+
 /* 订单管理 */
 const Order = () => import('../pages/order-manage')
-const OrderList = () => import('../pages/order-manage/order-list')
+const printReportShow = () => import('../pages/order-manage/order-list')
 const ProductManage = () => import('../pages/order-manage/product-manage')
 const ProductionList = () => import('../pages/order-manage/product-manage/production-list')
 const ReviewManage = () => import('../pages/order-manage/product-manage/review-manage')
@@ -17,8 +20,40 @@ const BaiduMap = () => import('../pages/map-manage/baidu-map')
 const MapArea = () => import('../pages/map-manage/baidu-map/map-area')
 const MapZoom = () => import('../pages/map-manage/baidu-map/map-zoom')
 const GaodeMap = () => import('../pages/map-manage/gaode-map')
+
+/* vue使用技巧 */
+const vueSkill = () => import("../pages/vueSkill")
+const defect = ()=> import("../pages/vueSkill/defect")
+const communication = ()=> import("../pages/vueSkill/communication")
+
+/* 流程图 */
+const flowchart = ()=> import("../pages/flowchart")
+const start = () => import("../pages/flowchart/start")
+
 /* 需要权限判断的路由 */
 const dynamicRoutes = [
+    {
+        path:'/loseEfficacy',
+        component:loseEfficacy,
+        name:"loseEfficacy",
+        meta: {
+            name: '失效问题',
+            icon: 'icon-email'
+        },
+        children: [
+            {
+                path: 'loseEfficacy',
+                name: 'loseEfficacy',
+                hidden: false,
+                iframeComponent: 'loseEfficacy',
+                component: loseEfficacy,
+                meta: {
+                    name: 'v-model',
+                    icon: 'icon-quit'
+                }
+            },
+        ]
+    },
     {
         path: '/order',
         component: Order,
@@ -29,9 +64,11 @@ const dynamicRoutes = [
         },
         children: [
             {
-                path: 'list',
-                name: 'order-list',
-                component: OrderList,
+                path: 'printReportShow',
+                name: 'printReportShow',
+                hidden: false,
+                iframeComponent: 'printReportShow',
+                component: printReportShow,
                 meta: {
                     name: '订单列表',
                     icon: 'icon-quit'
@@ -145,6 +182,47 @@ const dynamicRoutes = [
             meta:{
                 name:"高德地图",
                 icon: 'icon-product-manage'
+            }
+        }]
+    },{
+        path:"/vueSkill",
+        component:vueSkill,
+        name:"vueSkill",
+        meta:{
+            name:"使用技巧",
+            icon:"icon-product-manage"
+        },
+        children:[{
+            path:"/defect",
+            component:defect,
+            name:"defect",
+            meta:{
+                name:"缺陷",
+                icon: '',
+            }
+        },{
+            path:"/communication",
+            component:communication,
+            name:"communication",
+            meta:{
+                name:"通信",
+                icon:""
+            }
+        }]
+    },{
+        path:"/flowchart",
+        component:flowchart,
+        name:"flowchart",
+        meta:{
+            name:"流程图"
+        },
+        children:[{
+            path:"/start",
+            component:start,
+            name:"start",
+            meta:{
+                name:"起步",
+                icon:"icon-product-manage"
             }
         }]
     }

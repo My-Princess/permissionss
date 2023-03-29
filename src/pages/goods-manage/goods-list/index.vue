@@ -1,10 +1,10 @@
 <template>
-  <div class="mychannelProfile" style="villageDetail1">
+  <div class="mychannelProfile">
     <el-menu
       :default-active="activeName"
       class="hk-person-item"
       text-color="#333"
- 
+ active-text-color="#e44032"
       @select="handleSelect"
       :style="{ top: NavDistance + 'px' }"
     >
@@ -33,7 +33,7 @@
     <div class="hk-details-bar" id="state" ref="myMenu">
       <div id="resumes" class="hk-details-title">
          <div class="d_jump" ref="d_jump">
-          <div>111111111111111111111111111111111111111</div>
+          <div>111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div>
           <div>111111111111111111111111111111111111111</div>
           <div>111111111111111111111111111111111111111</div>
           <div>111111111111111111111111111111111111111</div>
@@ -79,12 +79,73 @@
           <div>111111111111111111111111111111111111111</div>
  
          </div>
-         <div class="d_jump" ref="d_jump">222</div>
-         <div class="d_jump" ref="d_jump">333</div>
-         <div class="d_jump" ref="d_jump">444</div>
-         <div class="d_jump" ref="d_jump">555</div>
-         <div class="d_jump" ref="d_jump">666</div>
-         <div class="d_jump" ref="d_jump">777</div>
+         <div class="d_jump" ref="d_jump">
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+          <div>2222222222222222222222222222222222222</div>
+         </div>
+         <div class="d_jump" ref="d_jump">
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          <div>333333333333333333333333333333333333</div>
+          </div>
+         <div class="d_jump" ref="d_jump">
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+          <div>444444444444444444444444444444444444</div>
+         </div>
+         <div class="d_jump" ref="d_jump">
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+          <div>5555555555555555555555555555555555555</div>
+         </div>
+         <div class="d_jump" ref="d_jump">
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+          <div>666666666666666666666666666666666666</div>
+         </div>
+         <div class="d_jump" ref="d_jump">
+          <div>77777777777777777777777777777777777</div>
+          <div>77777777777777777777777777777777777</div>
+         </div>
       </div>
     </div>
   </div>
@@ -104,7 +165,9 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      window.addEventListener("scroll", this.onScroll);
+      console.log(document.querySelector(".mychannelProfile").offsetTop);
+
+      window.addEventListener("scroll", this.onScroll, true);
     });
   },
   methods: {
@@ -121,6 +184,7 @@ export default {
     onScroll() {
       let scrolled =
         document.documentElement.scrollTop || document.body.scrollTop;
+      console.log("呃呃呃呃",scrolled)
       if (scrolled >= 1300) {
         this.activeName = "7";
         console.log("7");
@@ -167,6 +231,7 @@ export default {
         newDistance = 321;
       } else if (index > 0 || index <= 6) {
         this.NavDistance = total;
+        console.log("NavDistance",this.NavDistance)
       } else {
         this.NavDistance = total - 600;
       }
@@ -213,7 +278,10 @@ export default {
 <style>
 .mychannelProfile{
   height: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+    height: 100%;
+  overflow: scroll !important;
+  position: relative;
 }
 .villageDetail1{
   position: relative;

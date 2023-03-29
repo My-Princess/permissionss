@@ -20,6 +20,7 @@
         <button id="loginBtn" @click="login">登录</button>
       </p>
     </div>
+  
   </div>
 </template>
 
@@ -44,7 +45,10 @@ export default {
         this.$router.replace("/")
     }
   },
-  mounted() {}
+  mounted() {
+
+        
+  }
 };
 </script>
 <style scoped lang="scss">

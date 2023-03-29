@@ -9,5 +9,13 @@ module.exports = {
                 }
             }
         }
+    },
+    configureWebpack: {
+        externals:  {
+            "BMapLib": "BMapLib"
+          }
+      },
+    chainWebpack(config) {
+        config.externals({ './cptable': 'var cptable' })
     }
 }
